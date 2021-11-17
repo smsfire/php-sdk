@@ -5,6 +5,11 @@
     "homepage": "http://github.com/smsfire/php-sms",
     "type": "library",
     "license": "MIT",
+    "minimum-stability": "stable",
+    "support": {
+      "email":"suporte@smsfire.com.br",
+      "docs":"https://docs.smsfire.com.br"
+    },
     "authors": [
       {
         "name": "SMSFIRE API Team",
