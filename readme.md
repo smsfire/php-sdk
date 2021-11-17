@@ -23,7 +23,7 @@ The reference of this service can be found <a href="https://docs.smsfire.com.br/
 
 ## Namespace - Sms\\Message
 This namespace will give to you access to few method linked to SMS API services as:
-- sendIndividual() - Send individual sms message
+- <a href="#send-individual-message">sendIndividual()</a> - Send individual sms message
 - sendBulk() - Send bulk sms messages
 - inbox() - Get your inbox sms messages
 - status() - By id or customId you can retrieve message status
