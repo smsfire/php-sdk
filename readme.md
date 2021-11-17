@@ -5,15 +5,15 @@ With this SDK you will have access to all public functions of SMS APIs like:
 - Get inbox messages
 
 
-#Requirements
+# Requirements
 - PHP >= 7.1.0
 - User and pass (<a href="https://smsfire.com.br" target="_blank">Register here</a>)
 
-#Installation
+# Installation
 You can install php-sms via composer or by downloading the source.
 
-##Composer
-*php-sms* is available on Packagist as the smsfire/sdk package:
+## Composer
+**php-sms** is available on Packagist as the smsfire/sdk package:
 ```composer
 composer require smsfire/sdk
 ```
