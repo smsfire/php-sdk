@@ -1,0 +1,23 @@
+{
+    "name": "smsfire/php-sms",
+    "description": "SDK for all SMS services of SMSFIRE",
+    "keywords": ["smsfire", "sms", "api"],
+    "homepage": "http://github.com/smsfire/php-sms",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "SMSFIRE API Team",
+        "email": "suporte@smsfire.com.br"
+      }
+    ],
+    "require": {},
+    "autoload": {
+      "psr-4": {
+        "Smsfire\\": "src/classes/",
+        "Smsfire\\Traits\\": "src/traits/",
+        "Smsfire\\Exceptions\\": "src/exceptions/",
+        "Smsfire\\Configurations\\": "src/configs/"
+      }
+    }
+}
