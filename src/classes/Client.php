@@ -31,8 +31,8 @@ class Client
         'timeout' => Constants::REQUEST_TIMEOUT,
         'debug' => $debug,
         'headers' => [
-          'Content-type' => 'application/json',
-          'Authorization' => 'Basic '.$this->authToken
+          'Content-type: application/json',
+          'Authorization: Basic '.$this->authToken
         ]
       ]);
     }

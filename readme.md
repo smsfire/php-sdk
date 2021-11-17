@@ -29,6 +29,8 @@ This namespace will give to you access to few method linked to SMS API services 
 - status() - By id or customId you can retrieve message status
 
 ### Send individual message
+Access the <a href="https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado">reference docs</a> to check the data response and the details of each parameter of this method.
+
 ```php
 //Load composer autoload file
 require './vendor/autoload.php';
@@ -38,6 +40,7 @@ use Smsfire\Exceptions\SmsfireException;
 use Smsfire\Exceptions\HttpException;
 
 try {
+
     $user = 'myuser'; //Same user that is used to access Dashboard
     $pass = 'mypass'; //Same password that is used to access Dashboard
     $token = base64_encode("{$user}:{$pass}");   
@@ -45,15 +48,15 @@ try {
     //Pass base64 token on Message instance
     $messages = new Messages($token);
     $response = $messages->sendIndividual(
-        '5511999999999', //Phone on international syntax
-        'my message', //Text to sent
-        'smsfire', //Remitent of message
-        'myid-01234', //Your custom id of message
-        1234, //Merge message into campaign id
-        false, //Set message as false
-        true, //Allow gateway to capture reply from your messages
-        date(DATE_ISO8601), //Schedule datetime on ISO8601  format
-        false //Debug request
+        '5511999999999',    // [REQUIRED] - Phone on international syntax - REDUIRED
+        'my message',       // [REQUIRED] - Text to sent
+        'smsfire',          // Remitent of message
+        'myid-01234',       // Your custom id of message
+        1234,               // Merge message into campaign id
+        false,              // Set message as false
+        true,               // Allow gateway to capture reply from your messages
+        date(DATE_ISO8601), // Schedule datetime on ISO8601  format
+        false               // Debug request
     );
 
     /**
@@ -70,6 +73,9 @@ try {
 
     //Response as array
     $response->__toArray();
+
+    //Response with the statusCode of Http response
+    $response->statusCode();
 
 } catch (SmsfireException $e) {  
     echo $e->getMessage();

@@ -25,7 +25,7 @@ class Response
         return json_decode($this->response, true);
     }
 
-    public function status()
+    public function statusCode()
     {
         return $this->httpCode;
     }

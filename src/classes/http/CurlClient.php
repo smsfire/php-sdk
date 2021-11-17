@@ -45,8 +45,8 @@ class CurlClient implements Client
         if ($method === 'GET') {
             $queryString = '?'.http_build_query($data);
             $this->curlOptions += [
-        CURLOPT_HTTPGET => true
-      ];
+              CURLOPT_HTTPGET => true
+            ];
         }
 
         if ($method === 'POST') {
@@ -54,16 +54,16 @@ class CurlClient implements Client
         }
 
         $this->curlOptions += [
-      CURLOPT_URL => Constants::API_V2_HOST . $uri. ($queryString ?? false),
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_TIMEOUT => $timeout,
-      CURLOPT_CUSTOMREQUEST => $method,
-      CURLOPT_SSL_VERIFYHOST => false,
-      CURLOPT_SSL_VERIFYPEER => false,
-      CURLOPT_POSTFIELDS => ($postFields ?? false),
-      CURLOPT_HEADER => $debug,
-      CURLOPT_HTTPHEADER => $headers
-    ];
+          CURLOPT_URL => Constants::API_V2_HOST . $uri. ($queryString ?? false),
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_TIMEOUT => $timeout,
+          CURLOPT_CUSTOMREQUEST => $method,
+          CURLOPT_SSL_VERIFYHOST => false,
+          CURLOPT_SSL_VERIFYPEER => false,
+          CURLOPT_POSTFIELDS => ($postFields ?? false),
+          CURLOPT_HEADER => $debug,
+          CURLOPT_HTTPHEADER => $headers
+        ];
 
         return curl_setopt_array($this->curl, $this->curlOptions);
     }
