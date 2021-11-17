@@ -48,14 +48,14 @@ try {
     //Pass base64 token on Message instance
     $messages = new Messages($token);
     $response = $messages->sendIndividual(
-        '5511999999999',    // [REQUIRED] - Phone on international syntax - REDUIRED
+        '5511999999999',    // [REQUIRED] - Phone on international syntax
         'my message',       // [REQUIRED] - Text to sent
         'smsfire',          // Remitent of message
         'myid-01234',       // Your custom id of message
         1234,               // Merge message into campaign id
         false,              // Set message as false
         true,               // Allow gateway to capture reply from your messages
-        date(DATE_ISO8601), // Schedule datetime on ISO8601  format
+        '2021-11-17 15:00:00', // Schedule datetime on - ISO8601 - Y-m-d H:i:s
         false               // Debug request
     );
 

@@ -14,8 +14,12 @@ class Messages extends Client
     private $client;
     private $message;
 
-    public function __construct($token)
+    public function __construct(?string $token = null)
     {
+        if (empty($token)) {
+            throw new SmsfireException('Authentication token is required');
+        }
+
         $this->client = parent::__construct($token);
     }
 
@@ -31,7 +35,7 @@ class Messages extends Client
      * @param boolean $debug - Perform headers debug of API request
      * @return object Response - Handle response of API request
      */
-    public function sendIndividual($to, $text, $from = null, $customId = null, $campaignId = null, $flash = false, $allowReply = false, $scheduleTime = null, $debug = false)
+    public function sendIndividual(string $to, string $text, ?string $from = null, ?string $customId = null, ?int $campaignId = null, bool $flash = false, bool $allowReply = false, ?string $scheduleTime = null, bool $debug = false)
     {
         $apiParameters = $this->getApiParametersMap();
         $this->message = [
