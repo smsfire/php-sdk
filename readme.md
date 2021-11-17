@@ -21,7 +21,12 @@ composer require smsfire/sdk
 # Quickstart
 The reference of this service can be found <a href="https://docs.smsfire.com.br/apis-sms" target="_blank">here</a>
 
-## Namespace - Sms\\Message 
+## Namespace - Sms\\Message
+This namespace will give to you access to few method linked to SMS API services as:
+- sendIndividual() - Send individual sms message
+- sendBulk() - Send bulk sms messages
+- inbox() - Get your inbox sms messages 
+- status() - By id or customId you can retrieve message status
 ```php
 <?php
 
@@ -38,7 +43,6 @@ try {
 
     //Pass base64 token on Message instance
     $messages = new Messages($token);
-
     $response = $messages->sendIndividual(
         '5511999999999', //Phone on international syntax
         'my message', //Text to sent
