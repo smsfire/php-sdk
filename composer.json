@@ -5,7 +5,7 @@
     "homepage": "http://github.com/smsfire/php-sms",
     "type": "library",
     "license": "MIT",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "support": {
       "email":"suporte@smsfire.com.br",
       "docs":"https://docs.smsfire.com.br"
