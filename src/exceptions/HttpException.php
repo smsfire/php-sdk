@@ -2,6 +2,6 @@
 
 namespace Smsfire\Exceptions;
 
-class SmsfireException extends \Exception
+class HttpException extends \Exception
 {
 }

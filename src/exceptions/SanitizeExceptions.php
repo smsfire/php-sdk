@@ -2,6 +2,6 @@
 
 namespace Smsfire\Exceptions;
 
-class SanitizeExceptions extends SmsfireException {
-
+class SanitizeExceptions extends SmsfireException
+{
 }

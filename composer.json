@@ -11,7 +11,13 @@
         "email": "suporte@smsfire.com.br"
       }
     ],
-    "require": {},
+    "scripts": {
+      "check-style": "php-cs-fixer fix --diff --verbose --dry-run .",
+      "fix-style": "php-cs-fixer fix . --rules=@PSR2"
+    },
+    "require": {
+      "php": ">=7.1.0"
+    },
     "autoload": {
       "psr-4": {
         "Smsfire\\": "src/classes/",
@@ -19,5 +25,8 @@
         "Smsfire\\Exceptions\\": "src/exceptions/",
         "Smsfire\\Configurations\\": "src/configs/"
       }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.3"
     }
 }
