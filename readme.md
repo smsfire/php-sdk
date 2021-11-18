@@ -47,7 +47,9 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | **debug**        | *bool*      | Debug API request                                 | true / false        | :x:                |
 
 > **Details to note**
+>
 > The **allowReply** param can cause additional costs, check with your account manager the details abouts
+>
 > The **flash** param depends of route that were settled on your account as well of each carrier's availability for this feature.
 
 #### Example
