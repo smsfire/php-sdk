@@ -42,17 +42,17 @@ This namespace will give to you access to few method linked to SMS API services 
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
 
 #### Guide of available parameters on this method
-| Param            | Type        | Description                                       | Example             | Required           |
-| ---------------- | ----------- | ------------------------------------------------- | ------------------- | :----------------: |
-| **to**           | *string*    | Phone at international syntax                     | 5511944556677       | :white_check_mark: |
-| **text**         | *string*    | SMS message - Max 765 characters                  | This my message     | :white_check_mark: |
-| **from**         | *string*    | Remitent of sms - Max 11 characters               | SMSFIRE             | :x:                |
-| **customId**     | *string*    | Set your own id - Max 40 characters               | myId-0001           | :x:                |
-| **campaignId**   | *int*       | Merge messages into existent campaign             | 1234                | :x:                |
-| **flash**        | *bool*      | Send message on flash mode - Check availability   | true / false        | :x:                |
-| **allowReply**   | *bool*      | Allow gateway to capture reply from your messages | true / false        | :x:                |
-| **scheduleTime** | *string*    | Schedule message on given datetime - ISO8601      | 2021-11-18 18:00:00 | :x:                |
-| **debug**        | *bool*      | Debug API request                                 | true / false        | :x:                |
+| Param            | Type        | Description                                       | Condition               | Required           |
+| ---------------- | ----------- | ------------------------------------------------- | ----------------------- | :----------------: |
+| **to**           | *string*    | Phone at international syntax                     | Max of 15 characters    | :white_check_mark: |
+| **text**         | *string*    | SMS message                                       | Max of 765 characters   | :white_check_mark: |
+| **from**         | *string*    | Remitent of sms                                   | Max of 11 characters    | :x:                |
+| **customId**     | *string*    | Set your own id                                   | Max of 40 characters    | :x:                |
+| **campaignId**   | *int*       | Merge messages into existent campaign             | -                       | :x:                |
+| **flash**        | *bool*      | Send message on flash mode - Check availability   | Default: false          | :x:                |
+| **allowReply**   | *bool*      | Allow gateway to capture reply from your messages | Default: false          | :x:                |
+| **scheduleTime** | *string*    | Schedule message on given datetime - ISO8601      | Datetime Iso8601        | :x:                |
+| **debug**        | *bool*      | Debug API request                                 | Default: false          | :x:                |
 
 #### Example
 ```php
@@ -117,10 +117,12 @@ try {
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#rest-json) to check the data response and the details of each parameter of this method.
 
 #### Guide of available parameters on this method
-| Param                   | Type        | Description                                       | Example             | Required           |
-| ----------------------- | ----------- | ------------------------------------------------- | ------------------- | :----------------: |
-| **destinations**        | *array*     | Array of destinations to send sms                 | -                   | :white_check_mark: |
-| **destinations[*].to**  | *string*    | Phone at international syntax                     | 5511944556677       | :white_check_mark: |
+| Param                     | Type        | Description                                           | Condition                             | Required           |
+| ------------------------- | ----------- | ----------------------------------------------------- | --------------------------------------| :----------------: |
+| **destinations**          | *array*     | Array of destinations to message                      | Min of 2 items and Max of 1000 items  | :white_check_mark: |
+| **destinations[*].to**    | *string*    | Phone at international syntax                         | Max of 15 characters                  | :white_check_mark: |
+| **destinations[*].text**  | *string*    | SMS message                                           | Max of 765 characters                 | :x:                |
+| **destinations[*].from**  | *string*    | Remitent of SMS                                       | Max of 11 characters                  | :x:                |
 
 
 ### Example
