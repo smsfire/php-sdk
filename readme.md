@@ -5,7 +5,6 @@ With this SDK you will have access to all public functions of SMS APIs like:
 * Get message status
 * Get inbox messages
 
-
 # Requirements
 * Composer > 2+
 * PHP >= 7.1.0
@@ -22,6 +21,16 @@ composer require smsfire/php-sms
 
 # Quickstart
 The reference of this service can be found [here](https://docs.smsfire.com.br/apis-sms)
+
+## Important
+
+### Receiving messages (MO)
+When you turn `true` the `allowReply` param at individual or bulk messaging methods, this can cause additional costs on your account.
+Contact your account manager to know more about it.
+
+### Flash messages - Class 0
+The `flash` param depends of route that were settled on your account as well of each carrier's availability for this feature.
+Contact your account manager to know more about it.
 
 ## Namespace - Sms\\Message
 This namespace will give to you access to few method linked to SMS API services as:
@@ -45,12 +54,6 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | **allowReply**   | *bool*      | Allow gateway to capture reply from your messages | true / false        | :x:                |
 | **scheduleTime** | *string*    | Schedule message on given datetime - ISO8601      | 2021-11-18 18:00:00 | :x:                |
 | **debug**        | *bool*      | Debug API request                                 | true / false        | :x:                |
-
-> **Details to note**
->
-> The **allowReply** param can cause additional costs, check with your account manager the details abouts
->
-> The **flash** param depends of route that were settled on your account as well of each carrier's availability for this feature.
 
 #### Example
 ```php
