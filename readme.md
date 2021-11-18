@@ -33,18 +33,24 @@ This namespace will give to you access to few method linked to SMS API services 
 ### Send individual message
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
 
-#### Guide to avaiable parameters on this method
-| Param        | Type        | Description                                       | Example             | Required           |
-| ------------ | ----------- | ------------------------------------------------- | ------------------- | :----------------: |
-| to           | *string*    | Phone at international syntax                     | 5511944556677       | :white_check_mark: |
-| text         | *string*    | SMS message - Max 765 characters                  |                     | :white_check_mark: |
-| from         | *string*    | Remitent of sms - Max 11 characters               | SMSFIRE             | :x:                |
-| customId     | *string*    | Set your own id - Max 40 characters               | myId-0001           | :x:                |
-| campaignId   | *int*       | Merge messages into existent campaign             | 1234                | :x:                |
-| flash        | *bool*      | Send message on flash mode - Check availability   | true / false        | :x:                |
-| allowReply   | *bool*      | Allow gateway to capture reply from your messages | true / false        | :x:                |
-| scheduleTime | *string*    | Schedule message on given datetime - ISO8601      | 2021-11-18 18:00:00 | :x:                |
-| debug        | *bool*      | Debug API request                                 | true / false        | :x:                |
+#### Guide of available parameters on this method
+| Param            | Type        | Description                                       | Example             | Required           |
+| ---------------- | ----------- | ------------------------------------------------- | ------------------- | :----------------: |
+| **to**           | *string*    | Phone at international syntax                     | 5511944556677       | :white_check_mark: |
+| **text**         | *string*    | SMS message - Max 765 characters                  | This my message     | :white_check_mark: |
+| **from**         | *string*    | Remitent of sms - Max 11 characters               | SMSFIRE             | :x:                |
+| **customId**     | *string*    | Set your own id - Max 40 characters               | myId-0001           | :x:                |
+| **campaignId**   | *int*       | Merge messages into existent campaign             | 1234                | :x:                |
+| **flash**        | *bool*      | Send message on flash mode - Check availability   | true / false        | :x:                |
+| **allowReply**   | *bool*      | Allow gateway to capture reply from your messages | true / false        | :x:                |
+| **scheduleTime** | *string*    | Schedule message on given datetime - ISO8601      | 2021-11-18 18:00:00 | :x:                |
+| **debug**        | *bool*      | Debug API request                                 | true / false        | :x:                |
+
+> **Additional costs**
+The **allowReply** param can cause additional costs, check with your account manager the details abouts
+
+> **Check availability**
+The **flash** param depends of route that were settled on your account as well of each carrier's availability for this feature.
 
 #### Example
 ```php
@@ -61,7 +67,10 @@ try {
     $pass = 'mypass'; //Same password that is used to access Dashboard
     $token = base64_encode("{$user}:{$pass}");   
 
-    //Pass base64 token on Message instance
+    /**
+     * Pass base64 token on Message instance
+     * Check guide table of params
+     */
     $messagesService = new Messages($token);
     $response = $messagesService->sendIndividual(
       $to,
