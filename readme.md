@@ -33,10 +33,9 @@ This namespace will give to you access to few method linked to SMS API services 
 ### Send individual message
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
 
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+| Param       | Type        | Description                   | Required |
+| ----------- | ----------- | ----------------------------- | -------- |
+| to          | *string*    | Phone at international syntax |   [x]    |
 
 ```php
 //Load composer autoload file
