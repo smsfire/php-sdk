@@ -25,7 +25,7 @@ The reference of this service can be found [here](https://docs.smsfire.com.br/ap
 ## Important
 
 ### Receiving messages (MO)
-When you set as **true** the `allowReply` param on [sendIndividual()](#send-individual-message) or [sendBulk()](#send-bulk-messages) messaging methods, this can cause additional costs on your account. Contact your account manager to know more about it.
+When you set as **true** the `allowReply` param on [sendIndividual()](#send-individual-message) or [sendBulk()](#send-bulk-messages) messaging methods, your account may have additional costs per each received message. Contact your account manager to know more about it.
 
 ### Flash messages - Class 0
 The `flash` param depends of route that were settled on your account as well of each carrier's availability for this feature.
@@ -116,6 +116,14 @@ try {
 ### Send bulk messages
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#rest-json) to check the data response and the details of each parameter of this method.
 
+#### Guide of available parameters on this method
+| Param                   | Type        | Description                                       | Example             | Required           |
+| ----------------------- | ----------- | ------------------------------------------------- | ------------------- | :----------------: |
+| **destinations**        | *array*     | Array of destinations to send sms                 | -                   | :white_check_mark: |
+| **destinations[*].to**  | *string*    | Phone at international syntax                     | 5511944556677       | :white_check_mark: |
+
+
+### Example
 ```php
 //Load composer autoload file
 require './vendor/autoload.php';
