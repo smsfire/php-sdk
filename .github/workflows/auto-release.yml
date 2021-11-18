@@ -1,5 +1,5 @@
 ---
-name: Automatic Releases
+name: "tagged-release"
 
 on:
   push:
