@@ -26,12 +26,14 @@ The reference of this service can be found [here](https://docs.smsfire.com.br/ap
 ## Namespace - Sms\\Message
 This namespace will give to you access to few method linked to SMS API services as:
 - [sendIndividual()](#send-individual-message) - Send individual sms message
-- sendBulk() - Send bulk sms messages
+- [sendBulk()](#send-bulk-messages) - Send bulk sms messages
 - inbox() - Get your inbox sms messages
 - status() - By id or customId you can retrieve message status
 
 ### Send individual message
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
+
+| Parameter | Required | Type | Example 
 
 ```php
 //Load composer autoload file
@@ -59,6 +61,67 @@ try {
         true,               // Allow gateway to capture reply from your messages
         '2021-11-17 15:00:00', // Schedule datetime on - ISO8601 - Y-m-d H:i:s
         false               // Debug request
+    );
+
+    /**
+     * Response as raw text
+     * Good to use when Debug option is true
+     */
+    echo $response;
+
+    //Response with the statusCode of Http response
+    echo $response->statusCode();
+
+    //Response as json string
+    echo $response->__toJson();
+
+    //Response as object
+    print_r($response->__toObject());
+
+    //Response as array
+    print_r($response->__toArray());
+
+} catch (SmsfireException $e) {  
+    echo $e->getMessage();
+} catch (HttpException $e) {
+    echo $e->getMessage();
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+```
+
+### Send bulk messages
+Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#rest-json) to check the data response and the details of each parameter of this method.
+
+```php
+//Load composer autoload file
+require './vendor/autoload.php';
+
+use Smsfire\Sms\Messages;
+use Smsfire\Exceptions\SmsfireException;
+use Smsfire\Exceptions\HttpException;
+
+try {
+
+    $user = 'myuser'; //Same user that is used to access Dashboard
+    $pass = 'mypass'; //Same password that is used to access Dashboard
+    $token = base64_encode("{$user}:{$pass}");   
+
+    //Pass base64 token on Message instance
+    $messagesService = new Messages($token);
+    $response = $messagesService->sendBulk(
+        [
+          [
+            'to' => '5511999999999',
+            'text' => 'First message',
+            'customId' => 'my-own-id-00001',
+            'flash' => true
+          ],
+          [
+            'to' => '5567988888888',
+            'text' => 'Second message'
+          ]
+        ]
     );
 
     /**

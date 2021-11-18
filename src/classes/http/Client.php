@@ -4,5 +4,5 @@ namespace Smsfire\Http;
 
 interface Client
 {
-    public function request($method, $uri, ...$params): Response;
+    public function request(string $method, string $uri, array ...$params): Response;
 }

@@ -12,7 +12,7 @@ class Client
 
     protected $authToken;
 
-    public function __construct($token)
+    public function __construct(string $token)
     {
         $this->authToken = $this->parseAuthToken($token);
     }
@@ -23,17 +23,18 @@ class Client
      * @param array $data
      * @param boolean $debug
      */
-    public function request($method, $uri, $data, $debug = false)
+    public function request($method, $uri, $payload, $debug = false)
     {
         $requestClient = new CurlClient();
-        return $requestClient->request($method, $uri, [
-        'data' => $data,
-        'timeout' => Constants::REQUEST_TIMEOUT,
-        'debug' => $debug,
-        'headers' => [
-          'Content-type: application/json',
-          'Authorization: Basic '.$this->authToken
-        ]
-      ]);
+        $response = $requestClient->request($method, $uri, [
+          'payload' => $payload,
+          'timeout' => Constants::REQUEST_TIMEOUT,
+          'debug' => $debug,
+          'headers' => [
+            'Content-type: application/json',
+            'Authorization: Basic '.$this->authToken
+          ]
+        ]);
+        return $response;
     }
 }

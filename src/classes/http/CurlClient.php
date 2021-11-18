@@ -24,12 +24,12 @@ class CurlClient implements Client
      * @param string $method - POST/GET methods available
      * @param string $uri - API service uri
      * @param array $params
-     * @return Response
+     * @return Smsfire\Http\Response
      */
-    public function request($method, $uri, ...$params): Response
+    public function request(string $method, string $uri, array ...$params): Response
     {
         $parsedParams = self::parseRequestData($params);
-        $this->setCurlOptions($method, $uri, $parsedParams['headers'], $parsedParams['data'], $parsedParams['timeout'], $parsedParams['debug']);
+        $this->setCurlOptions($method, $uri, $parsedParams['headers'], $parsedParams['payload'], $parsedParams['timeout'], $parsedParams['debug']);
         $response = curl_exec($this->curl);
 
         if (!$response) {
@@ -39,18 +39,28 @@ class CurlClient implements Client
         $this->response = new Response($response, curl_getinfo($this->curl, CURLINFO_HTTP_CODE));
         return $this->response;
     }
-
-    private function setCurlOptions($method, $uri, $headers, $data, $timeout, $debug)
+    /**
+     * Set curl options
+     * According request method
+     * @param string $method - POST/GET
+     * @param string $uri - Uri service of API
+     * @param array $headers - Required headers
+     * @param array $payload - Data payload to request
+     * @param int $timeout - request timeout
+     * @param bool $debug - Flag of debug mode
+     * @return bool
+     */
+    private function setCurlOptions(string $method, string $uri, array $headers, array $payload, int $timeout, bool $debug): bool
     {
         if ($method === 'GET') {
-            $queryString = '?'.http_build_query($data);
+            $queryString = '?'.http_build_query($payload);
             $this->curlOptions += [
               CURLOPT_HTTPGET => true
             ];
         }
 
         if ($method === 'POST') {
-            $postFields = json_encode($data);
+            $postFields = json_encode($payload);
         }
 
         $this->curlOptions += [

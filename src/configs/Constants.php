@@ -8,6 +8,7 @@ class Constants
     const DEFAULT_SMS_REMITENT = 'SMSFIRE';
     const DEFAULT_TIMEZONE = 'America/Sao_Paulo';
     const REQUEST_TIMEOUT = 10;
+    const MINIMUM_BULK_REQUEST = 2;
 
     const SMS_LENGTH = [
       'from' => 11,
@@ -33,7 +34,8 @@ class Constants
 
     const API_ENDPOINT = [
       'sms' => [
-        'individual' => '/sms/send/individual'
+        'individual' => '/sms/send/individual',
+        'bulk' => '/sms/send/bulk'
       ]
     ];
 
