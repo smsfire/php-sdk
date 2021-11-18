@@ -8,7 +8,7 @@ With this SDK you will have access to all public functions of SMS APIs like:
 # Requirements
 - Composer > 2+
 - PHP >= 7.1.0
-- User and pass (<a href="https://smsfire.com.br" target="_blank">Register here</a>)
+- User and pass ([Register here](https://smsfire.com.br))
 
 # Installation
 You can install **php-sms** via composer or by downloading the source.
@@ -20,17 +20,17 @@ composer require smsfire/php-sms
 ```
 
 # Quickstart
-The reference of this service can be found <a href="https://docs.smsfire.com.br/apis-sms" target="_blank">here</a>
+The reference of this service can be found [here](https://docs.smsfire.com.br/apis-sms)
 
 ## Namespace - Sms\\Message
 This namespace will give to you access to few method linked to SMS API services as:
-- <a href="#send-individual-message">sendIndividual()</a> - Send individual sms message
+- [sendIndividual()](#send-individual-message) - Send individual sms message
 - sendBulk() - Send bulk sms messages
 - inbox() - Get your inbox sms messages
 - status() - By id or customId you can retrieve message status
 
 ### Send individual message
-Access the <a href="https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado">reference docs</a> to check the data response and the details of each parameter of this method.
+Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
 
 ```php
 //Load composer autoload file
