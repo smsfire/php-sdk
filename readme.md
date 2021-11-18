@@ -1,9 +1,9 @@
 # PHP SDK - SMS
 With this SDK you will have access to all public functions of SMS APIs like:
-* Send individual sms message
-* Send bulk sms messages
-* Get message status
-* Get inbox messages
+:white_check_mark: Send individual sms message
+:white_check_mark: Send bulk sms messages
+:x: Get message status - *Work in progress*
+:x: Get inbox messages - *Work in progress*
 
 # Requirements
 * Composer > 2+
@@ -117,13 +117,17 @@ try {
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#rest-json) to check the data response and the details of each parameter of this method.
 
 #### Guide of available parameters on this method
-| Param                     | Type        | Description                                           | Condition                             | Required           |
-| ------------------------- | ----------- | ----------------------------------------------------- | --------------------------------------| :----------------: |
-| **destinations**          | *array*     | Array of destinations to message                      | Min of 2 items and Max of 1000 items  | :white_check_mark: |
-| **destinations[*].to**    | *string*    | Phone at international syntax                         | Max of 15 characters                  | :white_check_mark: |
-| **destinations[*].text**  | *string*    | SMS message                                           | Max of 765 characters                 | :x:                |
-| **destinations[*].from**  | *string*    | Remitent of SMS                                       | Max of 11 characters                  | :x:                |
-
+| Param                         | Type        | Description                                           | Condition                             | Required           |
+| ----------------------------- | ----------- | ----------------------------------------------------- | --------------------------------------| :----------------: |
+| **destinations**              | *array*     | Array of destinations to message                      | Min of 2 items and Max of 1000 items  | :white_check_mark: |
+| **destinations[*].to**        | *string*    | Phone at international syntax                         | Max of 15 characters                  | :white_check_mark: |
+| **destinations[*].text**      | *string*    | SMS message                                           | Max of 765 characters                 | :x:                |
+| **destinations[*].from**      | *string*    | Remitent of SMS                                       | Max of 11 characters                  | :x:                |
+| **destinations[*].customId**  | *string*    | Set your own id                                       | Max of 40 characters                  | :x:                |
+| **destinations[*].flash**     | *bool*      | Send message on flash mode - Check availability       | Default: false                        | :x:                |
+| **allowReply**                | *bool*      | Allow gateway to capture reply from your messages     | Default: false                        | :x:                |
+| **scheduleTime**              | *string*    | Schedule message on given datetime - ISO8601          | Datetime Iso8601                      | :x:                |
+| **debug**                     | *bool*      | Debug API request                                     | Default: false                        | :x:                |
 
 ### Example
 ```php
@@ -142,19 +146,27 @@ try {
 
     //Pass base64 token on Message instance
     $messagesService = new Messages($token);
+
+    //Minimum of two items to use Bulk request
+    $destinations = [
+      [
+        'to' => $firstDestination,
+        'text' => $firstMessage,
+        'customId' => $firstCustomId,
+        'flash' => $flash
+      ],
+      [
+        'to' => $secondDestination,
+        'text' => $secondMessage
+      ]
+    ];
+
     $response = $messagesService->sendBulk(
-        [
-          [
-            'to' => '5511999999999',
-            'text' => 'First message',
-            'customId' => 'my-own-id-00001',
-            'flash' => true
-          ],
-          [
-            'to' => '5567988888888',
-            'text' => 'Second message'
-          ]
-        ]
+        $destinations,
+        $campaignId,
+        $allowReply,
+        $scheduleTime,
+        $debug
     );
 
     /**
