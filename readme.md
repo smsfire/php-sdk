@@ -7,9 +7,9 @@ With this SDK you will have access to all public functions of SMS APIs like:
 
 
 # Requirements
-- Composer > 2+
-- PHP >= 7.1.0
-- User and pass ([Register here](https://smsfire.com.br))
+* Composer > 2+
+* PHP >= 7.1.0
+* User and pass ([Register here](https://smsfire.com.br))
 
 # Installation
 You can install **php-sms** via composer or by downloading the source.
