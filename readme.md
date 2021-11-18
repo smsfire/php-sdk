@@ -46,7 +46,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | **scheduleTime** | *string*    | Schedule message on given datetime - ISO8601      | 2021-11-18 18:00:00 | :x:                |
 | **debug**        | *bool*      | Debug API request                                 | true / false        | :x:                |
 
-> **Additional costs**
+> [**Additional costs**]
 The **allowReply** param can cause additional costs, check with your account manager the details abouts
 
 > **Check availability**
