@@ -1,10 +1,10 @@
 ---
-name: "tagged-release"
+name: Automatic Releases
 
 on:
   push:
     tags:
-      - "v*"
+      - "*"
 
 jobs:
   tagged-release:
