@@ -33,9 +33,17 @@ This namespace will give to you access to few method linked to SMS API services 
 ### Send individual message
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
 
-| Param       | Type        | Description                   | Required           |
-| ----------- | ----------- | ----------------------------- | :----------------: |
-| to          | *string*    | Phone at international syntax | :white_check_mark: |
+| Param        | Type        | Description                                       | Example             | Required           |
+| ------------ | ----------- | ------------------------------------------------- | ------------------- | :----------------: |
+| to           | *string*    | Phone at international syntax                     | 5511944556677       | :white_check_mark: |
+| text         | *string*    | SMS message - Max 765 characters                  |                     | :white_check_mark: |
+| from         | *string*    | Remitent of sms - Max 11 characters               | SMSFIRE             | :x:                |
+| customId     | *string*    | Set your own id - Max 40 characters               | myId-0001           | :x:                |
+| campaignId   | *int*       | Merge messages into existent campaign             | 1234                | :x:                |
+| flash        | *bool*      | Send message on flash mode - Check availability   | true / false        | :x:                |
+| allowReply   | *bool*      | Allow gateway to capture reply from your messages | true / false        | :x:                |
+| scheduleTime | *string*    | Schedule message on given datetime - ISO8601      | 2021-11-18 18:00:00 | :x:                |
+| debug        | *bool*      | Debug API request                                 | true / false        | :x:                |
 
 ```php
 //Load composer autoload file
@@ -54,15 +62,15 @@ try {
     //Pass base64 token on Message instance
     $messagesService = new Messages($token);
     $response = $messagesService->sendIndividual(
-        '5511999999999',    // [REQUIRED] - Phone on international syntax
-        'my message',       // [REQUIRED] - Text to sent
-        'smsfire',          // Remitent of message
-        'myid-01234',       // Your custom id of message
-        1234,               // Merge message into campaign id
-        false,              // Set message as false
-        true,               // Allow gateway to capture reply from your messages
-        '2021-11-17 15:00:00', // Schedule datetime on - ISO8601 - Y-m-d H:i:s
-        false               // Debug request
+      $to,
+      $text,
+      $from,
+      $customId,
+      $campaignId,
+      $flash,
+      $allowReply,
+      $scheduleTime,
+      $debug
     );
 
     /**
