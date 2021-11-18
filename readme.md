@@ -25,7 +25,7 @@ The reference of this service can be found [here](https://docs.smsfire.com.br/ap
 ## Important
 
 ### Receiving messages (MO)
-When you turn **true** the `allowReply` param on [sendIndividual()](#send-individual-message) or [sendBulk()](#send-bulk-messages) messaging methods, this can cause additional costs on your account. Contact your account manager to know more about it.
+When you set as **true** the `allowReply` param on [sendIndividual()](#send-individual-message) or [sendBulk()](#send-bulk-messages) messaging methods, this can cause additional costs on your account. Contact your account manager to know more about it.
 
 ### Flash messages - Class 0
 The `flash` param depends of route that were settled on your account as well of each carrier's availability for this feature.
