@@ -46,7 +46,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | ---------------- | ----------- | ------------------------------------------------- | ----------------------- | :----------------: |
 | **to**           | *string*    | Phone at international syntax                     | Max of 15 characters    | :white_check_mark: |
 | **text**         | *string*    | SMS message                                       | Max of 765 characters   | :white_check_mark: |
-| **from**         | *string*    | Remitent of sms                                   | Max of 11 characters    | :white_check_mark: |
+| **from**         | *string*    | Remitent of sms                                   | Max of 11 characters    | :x:                |
 | **customId**     | *string*    | Set your own id                                   | Max of 40 characters    | :x:                |
 | **campaignId**   | *int*       | Merge messages into existent campaign             | -                       | :x:                |
 | **flash**        | *bool*      | Send message on flash mode - Check availability   | Default: false          | :x:                |
@@ -121,7 +121,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | ----------------------------- | ----------- | ----------------------------------------------------- | --------------------------------------| :----------------: |
 | **destinations**              | *array*     | Array of destinations to message                      | Min of 2 items and Max of 1000 items  | :white_check_mark: |
 | **destinations[*].to**        | *string*    | Phone at international syntax                         | Max of 15 characters                  | :white_check_mark: |
-| **destinations[*].text**      | *string*    | SMS message                                           | Max of 765 characters                 | :x:                |
+| **destinations[*].text**      | *string*    | SMS message                                           | Max of 765 characters                 | :white_check_mark: |
 | **destinations[*].from**      | *string*    | Remitent of SMS                                       | Max of 11 characters                  | :x:                |
 | **destinations[*].customId**  | *string*    | Set your own id                                       | Max of 40 characters                  | :x:                |
 | **destinations[*].flash**     | *bool*      | Send message on flash mode - Check availability       | Default: false                        | :x:                |
