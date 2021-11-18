@@ -46,7 +46,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | ---------------- | ----------- | ------------------------------------------------- | ----------------------- | :----------------: |
 | **to**           | *string*    | Phone at international syntax                     | Max of 15 characters    | :white_check_mark: |
 | **text**         | *string*    | SMS message                                       | Max of 765 characters   | :white_check_mark: |
-| **from**         | *string*    | Remitent of sms                                   | Max of 11 characters    | :x:                |
+| **from**         | *string*    | Remitent of sms                                   | Max of 11 characters    | :white_check_mark: |
 | **customId**     | *string*    | Set your own id                                   | Max of 40 characters    | :x:                |
 | **campaignId**   | *int*       | Merge messages into existent campaign             | -                       | :x:                |
 | **flash**        | *bool*      | Send message on flash mode - Check availability   | Default: false          | :x:                |
