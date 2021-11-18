@@ -40,14 +40,14 @@ class Messages extends Client
     {
         $apiParameters = self::getSmsApiParametersMap();
         $this->payload = array_filter([
-          $apiParameters[1] => $this->smsToParameter($to),
-          $apiParameters[2] => $this->smsTextParameter($text),
-          $apiParameters[3] => $this->smsFromParameter($from),
-          $apiParameters[4] => $this->smsCustomIdParameter($customId),
-          $apiParameters[5] => $this->smsCampaignIdParameter($campaignId),
-          $apiParameters[6] => $this->smsFlashParameter($flash),
-          $apiParameters[7] => $this->smsAllowReplyParameter($allowReply),
-          $apiParameters[8] => $this->dateTimeIso8601($scheduleTime)
+            $apiParameters[1] => $this->smsToParameter($to),
+            $apiParameters[2] => $this->smsTextParameter($text),
+            $apiParameters[3] => $this->smsFromParameter($from),
+            $apiParameters[4] => $this->smsCustomIdParameter($customId),
+            $apiParameters[5] => $this->smsCampaignIdParameter($campaignId),
+            $apiParameters[6] => $this->smsFlashParameter($flash),
+            $apiParameters[7] => $this->smsAllowReplyParameter($allowReply),
+            $apiParameters[8] => $this->dateTimeIso8601($scheduleTime)
         ]);
 
         if (empty($this->payload)) {
@@ -66,23 +66,22 @@ class Messages extends Client
      * @param boolean $debug - Perform headers debug of API request
      * @return object Response - Handle response of API request
      */
-    public function sendBulk(array $destinations = [], ?int $campaignId = null, bool $allowReply = false, ?string $scheduleTime = null, bool $debug = false) {
+    public function sendBulk(array $destinations = [], ?int $campaignId = null, bool $allowReply = false, ?string $scheduleTime = null, bool $debug = false)
+    {
+        $apiParameters = self::getSmsApiParametersMap();
+        $parsedDestinations = $this->smsDestinationsParameter($destinations, $apiParameters);
 
-      $apiParameters = self::getSmsApiParametersMap();
-      $parsedDestinations = $this->smsDestinationsParameter($destinations, $apiParameters);
+        $this->payload = array_filter([
+            $apiParameters[0] => array_map('array_filter', $parsedDestinations),
+            $apiParameters[5] => $this->smsCampaignIdParameter($campaignId),
+            $apiParameters[7] => $this->smsAllowReplyParameter($allowReply),
+            $apiParameters[8] => $this->dateTimeIso8601($scheduleTime)
+        ]);
 
-      $this->payload = array_filter([
-        $apiParameters[0] => array_map('array_filter', $parsedDestinations),
-        $apiParameters[5] => $this->smsCampaignIdParameter($campaignId),
-        $apiParameters[7] => $this->smsAllowReplyParameter($allowReply),
-        $apiParameters[8] => $this->dateTimeIso8601($scheduleTime)
-      ]);
+        if (empty($this->payload)) {
+            throw new SmsfireException('Empty payload request');
+        }
 
-      if (empty($this->payload)) {
-          throw new SmsfireException('Empty payload request');
-      }
-
-      return $this->request('POST', Constants::API_ENDPOINT['sms']['bulk'], $this->payload, $debug);
-
+        return $this->request('POST', Constants::API_ENDPOINT['sms']['bulk'], $this->payload, $debug);
     }
 }

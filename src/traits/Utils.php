@@ -8,12 +8,11 @@ use Smsfire\Exceptions\HttpException;
 
 trait Utils
 {
-
-  /**
-   * Parse auth token base64
-   * @param string $token
-   * @return string
-   */
+    /**
+     * Parse auth token base64
+     * @param string $token
+     * @return string
+     */
     private static function parseAuthToken(string $token): string
     {
         $decodedToken = base64_decode($token);
@@ -34,15 +33,15 @@ trait Utils
     {
         $rawParams = $data[0] ?? [];
 
-        if(empty($rawParams)) {
+        if (empty($rawParams)) {
             throw new HttpException('Required params are empty');
         }
 
         $params = [
-          'payload' => $rawParams['payload'] ?? null,
-          'timeout' => $rawParams['timeout'] ?? null,
-          'headers' => $rawParams['headers'] ?? null,
-          'debug'   => $rawParams['debug'] ?? false
+            'payload' => $rawParams['payload'] ?? null,
+            'timeout' => $rawParams['timeout'] ?? null,
+            'headers' => $rawParams['headers'] ?? null,
+            'debug'   => $rawParams['debug'] ?? false
         ];
 
         if (empty($params['payload']) || empty($params['timeout']) || empty($params['headers'])) {
@@ -56,7 +55,8 @@ trait Utils
      * Get the API parameters
      * @return array
      */
-    private static function getSmsApiParametersMap(): array {
-      return array_keys(Constants::SMS_MAP_PARAMETERS);
+    private static function getSmsApiParametersMap(): array
+    {
+        return array_keys(Constants::SMS_MAP_PARAMETERS);
     }
 }

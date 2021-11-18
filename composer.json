@@ -18,7 +18,7 @@
     ],
     "scripts": {
       "check-style": "php-cs-fixer fix --diff --verbose --dry-run .",
-      "fix-style": "php-cs-fixer fix . --rules=@PSR2"
+      "fix-style": "php-cs-fixer fix . --rules=@PSR12"
     },
     "require": {
       "php": ">=7.1.0"

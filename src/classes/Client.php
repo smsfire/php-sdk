@@ -2,6 +2,8 @@
 
 namespace Smsfire;
 
+use stdClass;
+
 use Smsfire\Configurations\Constants;
 use Smsfire\Traits\Utils;
 use Smsfire\Http\CurlClient;
@@ -25,16 +27,23 @@ class Client
      */
     public function request($method, $uri, $payload, $debug = false)
     {
+        $params = [
+            'payload' => $payload,
+            'timeout' => Constants::REQUEST_TIMEOUT,
+            'debug' => $debug,
+            'headers' => [
+                'Content-type: application/json',
+                'Authorization: Basic '.$this->authToken
+            ]
+        ];
+
         $requestClient = new CurlClient();
-        $response = $requestClient->request($method, $uri, [
-          'payload' => $payload,
-          'timeout' => Constants::REQUEST_TIMEOUT,
-          'debug' => $debug,
-          'headers' => [
-            'Content-type: application/json',
-            'Authorization: Basic '.$this->authToken
-          ]
-        ]);
+        $response = $requestClient->request(
+            $method,
+            $uri,
+            $params
+        );
+
         return $response;
     }
 }

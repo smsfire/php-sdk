@@ -9,14 +9,13 @@ date_default_timezone_set(Constants::DEFAULT_TIMEZONE);
 
 trait Sanitization
 {
-
-  /**
-   * Sanitize TO parameter of SMS message
-   * @static
-   * @throws SanitizeExceptions
-   * @param string $data
-   * @return string
-   */
+    /**
+     * Sanitize TO parameter of SMS message
+     * @static
+     * @throws SanitizeExceptions
+     * @param string $data
+     * @return string
+     */
     private static function smsToParameter($data): string
     {
         $phone = preg_replace(Constants::REGEX_RULES['onlyNumeric'], null, $data);
@@ -60,6 +59,7 @@ trait Sanitization
     }
     /**
      * Sanitize FROM parameter of SMS message
+     * Default value: SMSFIRE
      * @static
      * @throws SanitizeExceptions
      * @param string $data
@@ -79,9 +79,10 @@ trait Sanitization
     }
     /**
      * Sanitize CUSTOMID parameter of SMS message
+     * Default value: null
      * @static
      * @throws SanitizeExceptions
-     * @param string $data
+     * @param string|null $data
      * @return string|null
      */
     private static function smsCustomIdParameter($data): ?string
@@ -138,11 +139,11 @@ trait Sanitization
     }
 
     /**
-     * Sanitize FLASH parameter of SMS message
+     * Sanitize ALLOWREPLY parameter of SMS message
      * Default value: false
      * @static
      * @throws SanitizeExceptions
-     * @param bool|null $data
+     * @param bool $data
      * @return bool
      */
     private static function smsAllowReplyParameter($data): bool
@@ -166,7 +167,7 @@ trait Sanitization
      * @param string|null $data - Datetime ISO8601 - yyyy-mmm-dd hh:ii:ss
      * @return string|null
      */
-    private static function dateTimeIso8601($data)
+    private static function dateTimeIso8601($data): ?string
     {
         if (empty($data)) {
             return null;
@@ -185,39 +186,36 @@ trait Sanitization
      * @param array $data
      * @return array
      */
-    private static function smsDestinationsParameter($data): array {
+    private static function smsDestinationsParameter($data): array
+    {
+        $messagesVolume = count($data);
+        $requiredParams = array_keys(Constants::SMS_MAP_PARAMETERS);
+        $destinations = [];
 
-      $messagesVolume = count($data);
-      $requiredParams = array_keys(Constants::SMS_MAP_PARAMETERS);
-      $destinations = [];
-
-      if($messagesVolume < Constants::MINIMUM_BULK_REQUEST) {
-        throw new SanitizeExceptions('At least ' . Constants::MINIMUM_BULK_REQUEST . ' destinations is needed on bulk request');
-      }
-
-      array_map(function($item) use ($requiredParams, &$destinations) {
-
-        if(array_key_exists($requiredParams[1], $item) === false) {
-          throw new SanitizeExceptions('Parameter TO is required');
+        if ($messagesVolume < Constants::MINIMUM_BULK_REQUEST) {
+            throw new SanitizeExceptions('At least ' . Constants::MINIMUM_BULK_REQUEST . ' destinations is needed on bulk request');
         }
 
-        if(array_key_exists($requiredParams[2], $item) === false) {
-          throw new SanitizeExceptions('Parameter TEXT is required');
-        }
+        array_map(function ($item) use ($requiredParams, &$destinations) {
+            if (array_key_exists($requiredParams[1], $item) === false) {
+                throw new SanitizeExceptions('Parameter TO is required');
+            }
 
-        $destinations[] = [
-          $requiredParams[1] => self::smsToParameter($item[$requiredParams[1]]),
-          $requiredParams[2] => self::smsTextParameter($item[$requiredParams[2]]),
-          $requiredParams[3] => self::smsFromParameter(($item[$requiredParams[3]] ?? null)),
-          $requiredParams[4] => self::smsCustomIdParameter(($item[$requiredParams[4]] ?? null)),
-          $requiredParams[6] => self::smsFlashParameter(($item[$requiredParams[6]] ?? null))
-        ];
+            if (array_key_exists($requiredParams[2], $item) === false) {
+                throw new SanitizeExceptions('Parameter TEXT is required');
+            }
+
+            $destinations[] = [
+                $requiredParams[1] => self::smsToParameter($item[$requiredParams[1]]),
+                $requiredParams[2] => self::smsTextParameter($item[$requiredParams[2]]),
+                $requiredParams[3] => self::smsFromParameter(($item[$requiredParams[3]] ?? null)),
+                $requiredParams[4] => self::smsCustomIdParameter(($item[$requiredParams[4]] ?? null)),
+                $requiredParams[6] => self::smsFlashParameter(($item[$requiredParams[6]] ?? null))
+            ];
+
+            return $destinations;
+        }, $data);
 
         return $destinations;
-
-      }, $data);
-
-      return $destinations;
-
     }
 }
