@@ -34,7 +34,7 @@ This namespace will give to you access to few method linked to SMS API services 
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
 
 | Param       | Type        | Description                   | Required           |
-| ----------- | ----------- | ----------------------------- | ------------------ |
+| ----------- | ----------- | ----------------------------- | :----------------: |
 | to          | *string*    | Phone at international syntax | :white_check_mark: |
 
 ```php
