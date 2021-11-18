@@ -48,8 +48,8 @@ try {
     $token = base64_encode("{$user}:{$pass}");   
 
     //Pass base64 token on Message instance
-    $messages = new Messages($token);
-    $response = $messages->sendIndividual(
+    $messagesService = new Messages($token);
+    $response = $messagesService->sendIndividual(
         '5511999999999',    // [REQUIRED] - Phone on international syntax
         'my message',       // [REQUIRED] - Text to sent
         'smsfire',          // Remitent of message
@@ -65,19 +65,19 @@ try {
      * Response as raw text
      * Good to use when Debug option is true
      */
-    $response;
-
-    //Response as json string
-    $response->__toJson();
-
-    //Response as object
-    $response->__toObject();
-
-    //Response as array
-    $response->__toArray();
+    echo $response;
 
     //Response with the statusCode of Http response
-    $response->statusCode();
+    echo $response->statusCode();
+
+    //Response as json string
+    echo $response->__toJson();
+
+    //Response as object
+    print_r($response->__toObject());
+
+    //Response as array
+    print_r($response->__toArray());
 
 } catch (SmsfireException $e) {  
     echo $e->getMessage();
