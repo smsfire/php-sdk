@@ -35,7 +35,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 
 | Param       | Type        | Description                   | Required           |
 | ----------- | ----------- | ----------------------------- | ------------------ |
-| to          | *string*    | Phone at international syntax | :white-check-mark: |
+| to          | *string*    | Phone at international syntax | :white_check_mark: |
 
 ```php
 //Load composer autoload file
