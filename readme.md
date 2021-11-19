@@ -44,10 +44,10 @@ Contact your account manager to know more about it.
 ## Namespace - Smsfire\\Exceptions
 
 Custom exceptions that allows you a better error handling.
-* **SmsfireException**
-    This will be thrown when any SDK required types and data were not meet.
-* **HttpException**
-    This will be thrown when the core API has some request problem as timeout or bad data for example.
+* **SmsfireException**  
+This will be thrown when any SDK required types and data were not meet.
+* **HttpException**  
+This will be thrown when the core API has some request problem as timeout or bad data for example.
 
 ## Namespace - Smsfire\\Sms\\Messages
 
