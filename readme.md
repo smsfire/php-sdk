@@ -33,8 +33,8 @@ composer require smsfire/php-sms
 
 The reference of this service can be found [here](https://docs.smsfire.com.br/apis-sms)
 
-:speech_balloon: Messages Service  
-:mailbox_with_mail: Inbox service  
+:speech_balloon: [Messages Service](#namespace---smsfiresmsmessages)  
+:mailbox_with_mail: [Inbox service](#namespace---smsfireinbox)  
 :ballot_box_with_check: Status service
 
 # Namespace - Smsfire\\Sms\\Messages
