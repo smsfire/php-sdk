@@ -29,7 +29,7 @@ The reference of this service can be found [here](https://docs.smsfire.com.br/ap
 :mailbox_with_mail: [Inbox Service](#namespace---smsfiresmsinbox)  
 :ballot_box_with_check: Status Service
 
-# Namespace - Smsfire\\Sms\\Messages
+## Namespace - Smsfire\\Sms\\Messages
 
 This namespace allows you to send SMS messages.
 - [sendIndividual()](#send-individual-message---sendindividual) - Send individual sms message
@@ -45,11 +45,11 @@ This namespace allows you to send SMS messages.
 > The `flash` param depends of route that were settled on your account as well of each carrier's availability for this feature.
 Contact your account manager to know more about it.
 
-## Send individual message - sendIndividual()
+### Send individual message - sendIndividual()
 
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
 
-### Guide of available parameters on this method
+#### Guide of available parameters on this method
 
 | Param            | Type        | Description                                       | Condition               | Required           |
 | ---------------- | ----------- | ------------------------------------------------- | ----------------------- | :----------------: |
@@ -123,11 +123,11 @@ try {
 }
 ```
 
-## Send bulk messages - sendBulk()
+### Send bulk messages - sendBulk()
 
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#rest-json) to check the data response and the details of each parameter of this method.
 
-### Guide of available parameters on this method
+#### Guide of available parameters on this method
 
 | Param                         | Type        | Description                                           | Condition                             | Required           |
 | ----------------------------- | ----------- | ----------------------------------------------------- | --------------------------------------| :----------------: |
@@ -211,7 +211,7 @@ try {
 
 ```
 
-# Namespace - Smsfire\\Sms\\Inbox
+## Namespace - Smsfire\\Sms\\Inbox
 
 This namespace allows you to get received messages from your sms inbox.
 
@@ -222,7 +222,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/inbox) to check
 
 > #### The statusCode 204 will be given when your inbox has no messages. [**REF. 204 No Content**](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/204)
 
-## Get all messages - getAll()
+### Get all messages - getAll()
 
 ### Example
 ```php
@@ -283,7 +283,7 @@ try {
 
 > Due API limitations this method will expose the **last 100 received messages** of your inbox. For more, access the [Portal SMSFire](https://v2.smsfire.com.br) and access it on menu SMS > Inbox
 
-## Get unread messages - getUnread()
+### Get unread messages - getUnread()
 
 ### Example
 ```php
@@ -342,14 +342,14 @@ try {
 
 ```
 
-# Namespace - Smsfire\\Exceptions
+## Namespace - Smsfire\\Exceptions
 
 Custom exceptions that allows you a better error handling.
 
-## SmsfireException
+### SmsfireException
 
 This will be thrown when any SDK required types and data were not meet.
 
-## HttpException
+### HttpException
 
 This will be thrown when the core API has some request problem as timeout or bad data for example.
