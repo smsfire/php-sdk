@@ -1,8 +1,8 @@
 {
-    "name": "smsfire/php-sms",
-    "description": "SDK for all SMS services of SMSFIRE",
-    "keywords": ["smsfire", "sms", "api"],
-    "homepage": "http://github.com/smsfire/php-sms",
+    "name": "smsfire/php-sdk",
+    "description": "SDK for all SMSFIRE services",
+    "keywords": ["smsfire", "sms", "whatsapp", "bigdata", "api"],
+    "homepage": "http://github.com/smsfire/php-sdk",
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
