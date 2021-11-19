@@ -5,10 +5,10 @@
 [![PHP Version Require](http://poser.pugx.org/smsfire/php-sms/require/php)](https://packagist.org/packages/smsfire/php-sms)
 
 With this SDK you will have access to all public functions of SMS APIs like:
-- :white_check_mark: Send individual sms message
-- :white_check_mark: Send bulk sms messages
-- :x: Get message status - *Work in progress*
-- :x: Get inbox messages - *Work in progress*
+:white_check_mark: Send individual sms message  
+:white_check_mark: Send bulk sms messages  
+:x: Get message status - *Work in progress*  
+:x: Get inbox messages - *Work in progress*  
 
 # Requirements
 
