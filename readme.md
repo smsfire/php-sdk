@@ -226,9 +226,9 @@ This namespace allows you to get received messages from your sms inbox.
 - [getAll()](#get-all-messages---getall) - Get read and unread messages
 - [getUnread()](#get-unread-messages---getunread) - Get unread messages
 
-Access the [reference docs](https://docs.smsfire.com.br/apis-sms/inbox) to check the data response and the details of each parameter of this method.
+> ### The statusCode 204 will be given when your inbox has no messages. [**REF. 204 No Content**](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/204)
 
-> The statusCode 204 will be given when your inbox has no messages. Ref [**204 No Content**](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/204)
+Access the [reference docs](https://docs.smsfire.com.br/apis-sms/inbox) to check the data response and the details of each parameter of this method.
 
 ## Get all messages - getAll()
 
