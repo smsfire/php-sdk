@@ -172,14 +172,14 @@ try {
     //Minimum of two items to use Bulk request
     $destinations = [
       [
-        'to' => $firstDestination,
-        'text' => $firstMessage,
-        'customId' => $firstCustomId,
-        'flash' => $flash
+        'to' => '5511944556677',
+        'text' => 'My first message',
+        'customId' => 'abc-00001',
+        'flash' => true
       ],
       [
-        'to' => $secondDestination,
-        'text' => $secondMessage
+        'to' => '5565988887777',
+        'text' => 'My second message'
       ]
     ];
 
