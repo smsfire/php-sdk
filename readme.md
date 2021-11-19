@@ -1,8 +1,10 @@
-# PHP SDK - SMS
+# PHP SDK
 
 [![Latest Stable Version](http://poser.pugx.org/smsfire/php-sms/v)](https://packagist.org/packages/smsfire/php-sms)
 [![Total Downloads](http://poser.pugx.org/smsfire/php-sms/downloads)](https://packagist.org/packages/smsfire/php-sms)
 [![PHP Version Require](http://poser.pugx.org/smsfire/php-sms/require/php)](https://packagist.org/packages/smsfire/php-sms)
+
+# SMS Services
 
 With this SDK you will have access to all public functions of SMS APIs like:  
 
