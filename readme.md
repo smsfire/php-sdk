@@ -1,18 +1,8 @@
 # PHP SDK
 
-[![Latest Stable Version](http://poser.pugx.org/smsfire/php-sms/v)](https://packagist.org/packages/smsfire/php-sms)
-[![Total Downloads](http://poser.pugx.org/smsfire/php-sms/downloads)](https://packagist.org/packages/smsfire/php-sms)
-[![PHP Version Require](http://poser.pugx.org/smsfire/php-sms/require/php)](https://packagist.org/packages/smsfire/php-sms)
-
-# SMS Services
-
-With this SDK you will have access to all public functions of SMS APIs like:  
-
-
-:white_check_mark: Send individual sms message  
-:white_check_mark: Send bulk sms messages  
-:white_check_mark: Get inbox messages  
-:x: Get message status - *Work in progress*  
+[![Latest Stable Version](http://poser.pugx.org/smsfire/php-sdk/v)](https://packagist.org/packages/smsfire/php-sdk)
+[![Total Downloads](http://poser.pugx.org/smsfire/php-sdk/downloads)](https://packagist.org/packages/smsfire/php-sdk)
+[![PHP Version Require](http://poser.pugx.org/smsfire/php-sdk/require/php)](https://packagist.org/packages/smsfire/php-sdk)
 
 # Requirements
 
@@ -22,16 +12,16 @@ With this SDK you will have access to all public functions of SMS APIs like:
 
 # Installation
 
-You can install **php-sms** via composer or by downloading the source.
+You can install **php-sdk** via composer or by downloading the source.
 
 ## Composer
 
-**php-sms** is available on Packagist as the **smsfire/php-sms** package:
+**php-sms** is available on Packagist as the **smsfire/php-sdk** package:
 ```
-composer require smsfire/php-sms
+composer require smsfire/php-sdk
 ```
 
-# Quickstart
+# SMS Services
 
 The reference of this service can be found [here](https://docs.smsfire.com.br/apis-sms)
 
