@@ -16,7 +16,7 @@ You can install **php-sdk** via composer or by downloading the source.
 
 ## Composer
 
-**php-sms** is available on Packagist as the **smsfire/php-sdk** package:
+**php-sdk** is available on Packagist as the **smsfire/php-sdk** package:
 ```
 composer require smsfire/php-sdk
 ```
