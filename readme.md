@@ -31,6 +31,12 @@ composer require smsfire/php-sms
 
 The reference of this service can be found [here](https://docs.smsfire.com.br/apis-sms)
 
+## Namespace - Smsfire\\Sms\\Messages
+
+This namespace allows you to send SMS messages.
+- [sendIndividual()](#send-individual-message---sendindividual) - Send individual sms message
+- [sendBulk()](#send-bulk-messages---sendbulk) - Send bulk sms messages
+
 > ### Receiving messages (MO)
 >
 > When you set as **true** the `allowReply` param on [sendIndividual()](#send-individual-message---sendindividual) or [sendBulk()](#send-bulk-messages---sendbulk) messaging methods, your account may have additional costs per each received message. Contact your account manager to know more about it.
@@ -40,12 +46,6 @@ The reference of this service can be found [here](https://docs.smsfire.com.br/ap
 >
 > The `flash` param depends of route that were settled on your account as well of each carrier's availability for this feature.
 Contact your account manager to know more about it.
-
-## Namespace - Smsfire\\Sms\\Messages
-
-This namespace allows you to send SMS messages.
-- [sendIndividual()](#send-individual-message---sendindividual) - Send individual sms message
-- [sendBulk()](#send-bulk-messages---sendbulk) - Send bulk sms messages
 
 ### Send individual message - sendIndividual()
 
