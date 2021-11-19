@@ -56,8 +56,8 @@ This will be thrown when the core API has some request problem as timeout or bad
 ## Namespace - Smsfire\\Sms\\Messages
 
 This namespace allows you to send SMS messages.
-- [sendIndividual()](#send-individual-message) - Send individual sms message
-- [sendBulk()](#send-bulk-messages) - Send bulk sms messages
+- [sendIndividual()](#send-individual-message---sendindividual) - Send individual sms message
+- [sendBulk()](#send-bulk-messages---sendbulk) - Send bulk sms messages
 
 ### Send individual message - sendIndividual()
 
