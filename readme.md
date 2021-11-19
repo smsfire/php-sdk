@@ -33,7 +33,7 @@ The reference of this service can be found [here](https://docs.smsfire.com.br/ap
 
 > ### Receiving messages (MO)
 >
-> When you set as **true** the `allowReply` param on [sendIndividual()](#send-individual-message) or [sendBulk()](#send-bulk-messages) messaging methods, your account may have additional costs per each received message. Contact your account manager to know more about it.
+> When you set as **true** the `allowReply` param on [sendIndividual()](#send-individual-message---sendindividual) or [sendBulk()](#send-bulk-messages---sendbulk) messaging methods, your account may have additional costs per each received message. Contact your account manager to know more about it.
 >
 >
 > ### Flash messages - Class 0
