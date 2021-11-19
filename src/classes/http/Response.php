@@ -30,7 +30,7 @@ class Response
      * Return response as object
      * @return object|null
      */
-    public function __toObject(): ?stdClass
+    public function __toObject()
     {
         return json_decode($this->response);
     }
