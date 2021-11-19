@@ -232,7 +232,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/inbox) to check
 
 > Due API limitations this method will expose the **last 100 received messages** of your inbox. For more, access the [Portal SMSFire](https://v2.smsfire.com.br) and access it on menu SMS > Inbox
 >
-> The 204 statusCode will be given when your inbox has no messages
+> The statusCode 204 will be given when your inbox has no messages. Ref [**204 No Content**](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/204)
 
 ### Example
 ```php
