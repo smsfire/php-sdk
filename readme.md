@@ -44,9 +44,13 @@ Contact your account manager to know more about it.
 ## Namespace - Smsfire\\Exceptions
 
 Custom exceptions that allows you a better error handling.
-* **SmsfireException**  
+
+### SmsfireException
+
 This will be thrown when any SDK required types and data were not meet.
-* **HttpException**  
+
+### HttpException
+
 This will be thrown when the core API has some request problem as timeout or bad data for example.
 
 ## Namespace - Smsfire\\Sms\\Messages
@@ -55,7 +59,7 @@ This namespace allows you to send SMS messages.
 - [sendIndividual()](#send-individual-message) - Send individual sms message
 - [sendBulk()](#send-bulk-messages) - Send bulk sms messages
 
-### Send individual message
+### Send individual message - sendIndividual()
 
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
 
@@ -133,7 +137,7 @@ try {
 }
 ```
 
-### Send bulk messages
+### Send bulk messages - sendBulk()
 
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#rest-json) to check the data response and the details of each parameter of this method.
 
