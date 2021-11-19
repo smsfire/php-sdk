@@ -145,9 +145,10 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | **scheduleTime**              | *string*    | Schedule message on given datetime                    | Datetime ISO8601                      | :x:                |
 | **debug**                     | *bool*      | Debug API request                                     | Default: false                        | :x:                |
 
-### Example
+#### Example
 
 ```php
+
 //Load composer autoload file
 require './vendor/autoload.php';
 
@@ -211,21 +212,73 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
+
 ```
 
 ## Namespace - Smsfire\\Sms\\Inbox
 
 This namespace allows you to get received messages from your sms inbox.
 
-- [getAll()](#send-individual-message---sendindividual) - Get read and unread messages
+- [getAll()](#get-all-messages---getall) - Get read and unread messages
 - [getUnread()](#send-bulk-messages---sendbulk) - Get unread messages
 
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/inbox) to check the data response and the details of each parameter of this method.
 
 ### Get all messages - getAll()
 
-> By API CORE limitations this method will expose the last 100 received messages from your inbox. To more, access the [Portal SMSFire](https://v2.smsfire.com.br) and check it on menu SMS > Inbox
+> Due **API limitations** this method will expose the last 100 received messages of your inbox. For more, access the [Portal SMSFire](https://v2.smsfire.com.br) and access it on menu SMS > Inbox
 
+#### Example
+```php
+
+//Load composer autoload file
+require './vendor/autoload.php';
+
+use Smsfire\Sms\Inbox;
+use Smsfire\Exceptions\SmsfireException;
+use Smsfire\Exceptions\HttpException;
+
+try {
+
+    $debug = false;   //Debug API request - DEFAULT: false
+    $user  = 'myuser'; //Same user that is used to access Dashboard
+    $pass  = 'mypass'; //Same password that is used to access Dashboard
+    $token = base64_encode("{$user}:{$pass}");   
+
+    /**
+     * Pass base64 token on Inbox instance
+     * Check guide table of params
+     */
+    $inboxServices = new Inbox($token);
+    $response = $inboxServices->getAll($debug);
+
+    /**
+     * Response as raw text
+     * Good to use when Debug option is true
+     */
+    echo $response;
+
+    //Response with the statusCode of Http response
+    echo $response->statusCode();
+
+    //Response as json string
+    echo $response->__toJson();
+
+    //Response as object
+    print_r($response->__toObject());
+
+    //Response as array
+    print_r($response->__toArray());
+
+} catch (SmsfireException $e) {  
+    echo $e->getMessage();
+} catch (HttpException $e) {
+    echo $e->getMessage();
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+
+```
 
 ## Namespace - Smsfire\\Exceptions
 
