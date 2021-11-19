@@ -25,7 +25,7 @@ class Client
      * @param array $data
      * @param boolean $debug
      */
-    public function request($method, $uri, $payload, $debug = false)
+    public function request($method, $uri, $payload = null, $debug = false)
     {
         $params = [
             'payload' => $payload,

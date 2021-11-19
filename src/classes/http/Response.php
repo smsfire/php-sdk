@@ -21,36 +21,36 @@ class Response
 
     /**
      * Return response as JSON
-     * @return string
+     * @return string|null
      */
-    public function __toJson(): string
+    public function __toJson(): ?string
     {
         return $this->response;
     }
 
     /**
      * Return response as object
-     * @return object
+     * @return object|null
      */
-    public function __toObject(): stdClass
+    public function __toObject(): ?stdClass
     {
         return json_decode($this->response);
     }
 
     /**
      * Return response as array
-     * @return array
+     * @return array|null
      */
-    public function __toArray(): array
+    public function __toArray(): ?array
     {
         return json_decode($this->response, true);
     }
 
     /**
      * Return Http statusCode
-     * @return string
+     * @return int
      */
-    public function statusCode(): string
+    public function statusCode(): int
     {
         return $this->httpCode;
     }

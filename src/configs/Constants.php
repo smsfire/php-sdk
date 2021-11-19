@@ -9,6 +9,7 @@ class Constants
     public const DEFAULT_TIMEZONE = 'America/Sao_Paulo';
     public const REQUEST_TIMEOUT = 10;
     public const MINIMUM_BULK_REQUEST = 2;
+    public const INIT_STATUSCODE_ERROR = 300;
 
     public const SMS_LENGTH = [
         'from' => 11,
@@ -35,7 +36,11 @@ class Constants
     public const API_ENDPOINT = [
         'sms' => [
             'individual' => '/sms/send/individual',
-            'bulk' => '/sms/send/bulk'
+            'bulk' => '/sms/send/bulk',
+            'inbox' => [
+                'new' => '/sms/inbox/new',
+                'all' => '/sms/inbox/all'
+            ]
         ]
     ];
 

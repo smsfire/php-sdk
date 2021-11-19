@@ -2,6 +2,8 @@
 
 namespace Smsfire\Http;
 
+use PhpCsFixer\Fixer\Casing\ConstantCaseFixer;
+
 use Smsfire\Configurations\Constants;
 use Smsfire\Http\Client;
 use Smsfire\Http\Response;
@@ -32,11 +34,13 @@ class CurlClient implements Client
         $this->setCurlOptions($method, $uri, $parsedParams['headers'], $parsedParams['payload'], $parsedParams['timeout'], $parsedParams['debug']);
         $response = curl_exec($this->curl);
 
-        if (!$response) {
+        $statusCode = $this->getCurlStatusCode();
+
+        if ($statusCode > Constants::INIT_STATUSCODE_ERROR) {
             throw new HttpException(curl_error($this->curl), curl_errno($this->curl));
         }
 
-        $this->response = new Response($response, curl_getinfo($this->curl, CURLINFO_HTTP_CODE));
+        $this->response = new Response($response, $statusCode);
         return $this->response;
     }
     /**
@@ -52,19 +56,26 @@ class CurlClient implements Client
      */
     private function setCurlOptions(string $method, string $uri, array $headers, array $payload, int $timeout, bool $debug): bool
     {
+
         if ($method === 'GET') {
-            $queryString = '?'.http_build_query($payload);
+
+            $endpoint = Constants::API_V2_HOST . $uri;
+            $endpoint .= ((!empty($payload)) ? '?'.http_build_query($payload) : false);
             $this->curlOptions += [
-              CURLOPT_HTTPGET => true
+                CURLOPT_HTTPGET => true
             ];
+
         }
 
         if ($method === 'POST') {
+
+            $endpoint = Constants::API_V2_HOST . $uri;
             $postFields = json_encode($payload);
+
         }
 
         $this->curlOptions += [
-            CURLOPT_URL => Constants::API_V2_HOST . $uri. ($queryString ?? false),
+            CURLOPT_URL => $endpoint,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT => $timeout,
             CURLOPT_CUSTOMREQUEST => $method,
@@ -76,5 +87,15 @@ class CurlClient implements Client
         ];
 
         return curl_setopt_array($this->curl, $this->curlOptions);
+    }
+
+    /**
+     * Get curl status code response
+     * @return string
+     */
+    private function getCurlStatusCode(): string {
+
+      return curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
+
     }
 }

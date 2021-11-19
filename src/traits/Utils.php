@@ -38,14 +38,14 @@ trait Utils
         }
 
         $params = [
-            'payload' => $rawParams['payload'] ?? null,
+            'payload' => $rawParams['payload'] ?? [],
             'timeout' => $rawParams['timeout'] ?? null,
             'headers' => $rawParams['headers'] ?? null,
             'debug'   => $rawParams['debug'] ?? false
         ];
 
-        if (empty($params['payload']) || empty($params['timeout']) || empty($params['headers'])) {
-            throw new HttpException('Required params are empty');
+        if (empty($params['headers'])) {
+            throw new HttpException('Required headers are empty');
         }
 
         return $params;
