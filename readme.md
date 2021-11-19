@@ -36,12 +36,17 @@ When you set as **true** the `allowReply` param on [sendIndividual()](#send-indi
 The `flash` param depends of route that were settled on your account as well of each carrier's availability for this feature.
 Contact your account manager to know more about it.
 
-## Namespace - Sms\\Message
-This namespace will give to you access to few method linked to SMS API services as:
+## Namespace - Smsfire\\Exceptions
+Custom exceptions that allows you a better error handling.
+* SmsfireException
+  This will be thrown when any SDK required types and data were not meet.
+* HttpException
+  This will be thrown when the core API has some request problem as timeout or bad data for example.
+
+## Namespace - Smsfire\\Sms\\Message
+This namespace allows you to send SMS messages.
 - [sendIndividual()](#send-individual-message) - Send individual sms message
 - [sendBulk()](#send-bulk-messages) - Send bulk sms messages
-- inbox() - Get your inbox sms messages
-- status() - By id or customId you can retrieve message status
 
 ### Send individual message
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
@@ -56,7 +61,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | **campaignId**   | *int*       | Merge messages into existent campaign             | -                       | :x:                |
 | **flash**        | *bool*      | Send message on flash mode - Check availability   | Default: false          | :x:                |
 | **allowReply**   | *bool*      | Allow gateway to capture reply from your messages | Default: false          | :x:                |
-| **scheduleTime** | *string*    | Schedule message on given datetime - ISO8601      | Datetime Iso8601        | :x:                |
+| **scheduleTime** | *string*    | Schedule message on given datetime                | Datetime ISO8601        | :x:                |
 | **debug**        | *bool*      | Debug API request                                 | Default: false          | :x:                |
 
 #### Example
@@ -131,7 +136,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | **destinations[*].customId**  | *string*    | Set your own id                                       | Max of 40 characters                  | :x:                |
 | **destinations[*].flash**     | *bool*      | Send message on flash mode - Check availability       | Default: false                        | :x:                |
 | **allowReply**                | *bool*      | Allow gateway to capture reply from your messages     | Default: false                        | :x:                |
-| **scheduleTime**              | *string*    | Schedule message on given datetime - ISO8601          | Datetime Iso8601                      | :x:                |
+| **scheduleTime**              | *string*    | Schedule message on given datetime                    | Datetime ISO8601                      | :x:                |
 | **debug**                     | *bool*      | Debug API request                                     | Default: false                        | :x:                |
 
 ### Example
@@ -199,3 +204,4 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
+```
