@@ -6,11 +6,11 @@
 
 With this SDK you will have access to all public functions of SMS APIs like:  
 
-  
+
 :white_check_mark: Send individual sms message  
 :white_check_mark: Send bulk sms messages  
+:white_check_mark: Get inbox messages*  
 :x: Get message status - *Work in progress*  
-:x: Get inbox messages - *Work in progress*  
 
 # Requirements
 
@@ -212,6 +212,20 @@ try {
     echo $e->getMessage();
 }
 ```
+
+## Namespace - Smsfire\\Sms\\Inbox
+
+This namespace allows you to get received messages from your sms inbox.
+
+- [getAll()](#send-individual-message---sendindividual) - Get read and unread messages
+- [getUnread()](#send-bulk-messages---sendbulk) - Get unread messages
+
+Access the [reference docs](https://docs.smsfire.com.br/apis-sms/inbox) to check the data response and the details of each parameter of this method.
+
+### Get all messages - getAll()
+
+> By API CORE limitations this method will expose the last 100 received messages from your inbox. To more, access the [Portal SMSFire](https://v2.smsfire.com.br) and check it on menu SMS > Inbox
+
 
 ## Namespace - Smsfire\\Exceptions
 
