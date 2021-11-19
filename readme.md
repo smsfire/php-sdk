@@ -9,7 +9,7 @@ With this SDK you will have access to all public functions of SMS APIs like:
 
 :white_check_mark: Send individual sms message  
 :white_check_mark: Send bulk sms messages  
-:white_check_mark: Get inbox messages*  
+:white_check_mark: Get inbox messages  
 :x: Get message status - *Work in progress*  
 
 # Requirements
@@ -33,7 +33,11 @@ composer require smsfire/php-sms
 
 The reference of this service can be found [here](https://docs.smsfire.com.br/apis-sms)
 
-## Namespace - Smsfire\\Sms\\Messages
+:speech_balloon: Messages Service  
+:mailbox_with_mail: Inbox service  
+:ballot_box_with_check: Status service
+
+# Namespace - Smsfire\\Sms\\Messages
 
 This namespace allows you to send SMS messages.
 - [sendIndividual()](#send-individual-message---sendindividual) - Send individual sms message
@@ -49,11 +53,11 @@ This namespace allows you to send SMS messages.
 > The `flash` param depends of route that were settled on your account as well of each carrier's availability for this feature.
 Contact your account manager to know more about it.
 
-### Send individual message - sendIndividual()
+## Send individual message - sendIndividual()
 
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
 
-#### Guide of available parameters on this method
+### Guide of available parameters on this method
 
 | Param            | Type        | Description                                       | Condition               | Required           |
 | ---------------- | ----------- | ------------------------------------------------- | ----------------------- | :----------------: |
@@ -67,7 +71,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | **scheduleTime** | *string*    | Schedule message on given datetime                | Datetime ISO8601        | :x:                |
 | **debug**        | *bool*      | Debug API request                                 | Default: false          | :x:                |
 
-#### Example
+### Example
 
 ```php
 //Load composer autoload file
@@ -127,11 +131,11 @@ try {
 }
 ```
 
-### Send bulk messages - sendBulk()
+## Send bulk messages - sendBulk()
 
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#rest-json) to check the data response and the details of each parameter of this method.
 
-#### Guide of available parameters on this method
+### Guide of available parameters on this method
 
 | Param                         | Type        | Description                                           | Condition                             | Required           |
 | ----------------------------- | ----------- | ----------------------------------------------------- | --------------------------------------| :----------------: |
@@ -145,7 +149,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | **scheduleTime**              | *string*    | Schedule message on given datetime                    | Datetime ISO8601                      | :x:                |
 | **debug**                     | *bool*      | Debug API request                                     | Default: false                        | :x:                |
 
-#### Example
+### Example
 
 ```php
 
@@ -215,7 +219,7 @@ try {
 
 ```
 
-## Namespace - Smsfire\\Sms\\Inbox
+# Namespace - Smsfire\\Sms\\Inbox
 
 This namespace allows you to get received messages from your sms inbox.
 
@@ -224,13 +228,13 @@ This namespace allows you to get received messages from your sms inbox.
 
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/inbox) to check the data response and the details of each parameter of this method.
 
-### Get all messages - getAll()
+## Get all messages - getAll()
 
 > Due API limitations this method will expose the **last 100 received messages** of your inbox. For more, access the [Portal SMSFire](https://v2.smsfire.com.br) and access it on menu SMS > Inbox
 >
 > The 204 statusCode will be given when your inbox has no messages
 
-#### Example
+### Example
 ```php
 
 //Load composer autoload file
@@ -287,9 +291,9 @@ try {
 
 ```
 
-### Get unread messages - getUnread()
+## Get unread messages - getUnread()
 
-#### Example
+### Example
 ```php
 
 //Load composer autoload file
@@ -346,14 +350,14 @@ try {
 
 ```
 
-## Namespace - Smsfire\\Exceptions
+# Namespace - Smsfire\\Exceptions
 
 Custom exceptions that allows you a better error handling.
 
-### SmsfireException
+## SmsfireException
 
 This will be thrown when any SDK required types and data were not meet.
 
-### HttpException
+## HttpException
 
 This will be thrown when the core API has some request problem as timeout or bad data for example.
