@@ -41,18 +41,6 @@ The reference of this service can be found [here](https://docs.smsfire.com.br/ap
 > The `flash` param depends of route that were settled on your account as well of each carrier's availability for this feature.
 Contact your account manager to know more about it.
 
-## Namespace - Smsfire\\Exceptions
-
-Custom exceptions that allows you a better error handling.
-
-### SmsfireException
-
-This will be thrown when any SDK required types and data were not meet.
-
-### HttpException
-
-This will be thrown when the core API has some request problem as timeout or bad data for example.
-
 ## Namespace - Smsfire\\Sms\\Messages
 
 This namespace allows you to send SMS messages.
@@ -222,3 +210,15 @@ try {
     echo $e->getMessage();
 }
 ```
+
+## Namespace - Smsfire\\Exceptions
+
+Custom exceptions that allows you a better error handling.
+
+### SmsfireException
+
+This will be thrown when any SDK required types and data were not meet.
+
+### HttpException
+
+This will be thrown when the core API has some request problem as timeout or bad data for example.
