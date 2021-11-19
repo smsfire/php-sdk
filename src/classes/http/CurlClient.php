@@ -2,8 +2,6 @@
 
 namespace Smsfire\Http;
 
-use PhpCsFixer\Fixer\Casing\ConstantCaseFixer;
-
 use Smsfire\Configurations\Constants;
 use Smsfire\Http\Client;
 use Smsfire\Http\Response;
@@ -56,22 +54,17 @@ class CurlClient implements Client
      */
     private function setCurlOptions(string $method, string $uri, array $headers, array $payload, int $timeout, bool $debug): bool
     {
-
         if ($method === 'GET') {
-
             $endpoint = Constants::API_V2_HOST . $uri;
             $endpoint .= ((!empty($payload)) ? '?'.http_build_query($payload) : false);
             $this->curlOptions += [
                 CURLOPT_HTTPGET => true
             ];
-
         }
 
         if ($method === 'POST') {
-
             $endpoint = Constants::API_V2_HOST . $uri;
             $postFields = json_encode($payload);
-
         }
 
         $this->curlOptions += [
@@ -93,9 +86,8 @@ class CurlClient implements Client
      * Get curl status code response
      * @return string
      */
-    private function getCurlStatusCode(): string {
-
-      return curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
-
+    private function getCurlStatusCode(): string
+    {
+        return curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
     }
 }
