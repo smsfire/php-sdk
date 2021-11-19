@@ -1,4 +1,4 @@
-# PHP SDK
+# SMSFIRE PHP SDK
 
 [![Latest Stable Version](http://poser.pugx.org/smsfire/php-sdk/v)](https://packagist.org/packages/smsfire/php-sdk)
 [![Total Downloads](http://poser.pugx.org/smsfire/php-sdk/downloads)](https://packagist.org/packages/smsfire/php-sdk)
