@@ -11,47 +11,56 @@ With this SDK you will have access to all public functions of SMS APIs like:
 - :x: Get inbox messages - *Work in progress*
 
 # Requirements
+
 * Composer > 2+
 * PHP >= 7.1.0
 * User and pass ([Register here](https://smsfire.com.br))
 
 # Installation
+
 You can install **php-sms** via composer or by downloading the source.
 
 ## Composer
+
 **php-sms** is available on Packagist as the **smsfire/php-sms** package:
 ```
 composer require smsfire/php-sms
 ```
 
 # Quickstart
+
 The reference of this service can be found [here](https://docs.smsfire.com.br/apis-sms)
 
-## Important
-
-### Receiving messages (MO)
-When you set as **true** the `allowReply` param on [sendIndividual()](#send-individual-message) or [sendBulk()](#send-bulk-messages) messaging methods, your account may have additional costs per each received message. Contact your account manager to know more about it.
-
-### Flash messages - Class 0
-The `flash` param depends of route that were settled on your account as well of each carrier's availability for this feature.
+> ### Receiving messages (MO)
+>
+> When you set as **true** the `allowReply` param on [sendIndividual()](#send-individual-message) or [sendBulk()](#send-bulk-messages) messaging methods, your account may have additional costs per each received message. Contact your account manager to know more about it.
+>
+>
+> ### Flash messages - Class 0
+>
+> The `flash` param depends of route that were settled on your account as well of each carrier's availability for this feature.
 Contact your account manager to know more about it.
 
 ## Namespace - Smsfire\\Exceptions
-Custom exceptions that allows you a better error handling.
-* SmsfireException
-  This will be thrown when any SDK required types and data were not meet.
-* HttpException
-  This will be thrown when the core API has some request problem as timeout or bad data for example.
 
-## Namespace - Smsfire\\Sms\\Message
+Custom exceptions that allows you a better error handling.
+* **SmsfireException**
+    This will be thrown when any SDK required types and data were not meet.
+* **HttpException**
+    This will be thrown when the core API has some request problem as timeout or bad data for example.
+
+## Namespace - Smsfire\\Sms\\Messages
+
 This namespace allows you to send SMS messages.
 - [sendIndividual()](#send-individual-message) - Send individual sms message
 - [sendBulk()](#send-bulk-messages) - Send bulk sms messages
 
 ### Send individual message
+
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#http-simplificado) to check the data response and the details of each parameter of this method.
 
 #### Guide of available parameters on this method
+
 | Param            | Type        | Description                                       | Condition               | Required           |
 | ---------------- | ----------- | ------------------------------------------------- | ----------------------- | :----------------: |
 | **to**           | *string*    | Phone at international syntax                     | Max of 15 characters    | :white_check_mark: |
@@ -65,6 +74,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | **debug**        | *bool*      | Debug API request                                 | Default: false          | :x:                |
 
 #### Example
+
 ```php
 //Load composer autoload file
 require './vendor/autoload.php';
@@ -124,9 +134,11 @@ try {
 ```
 
 ### Send bulk messages
+
 Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem#rest-json) to check the data response and the details of each parameter of this method.
 
 #### Guide of available parameters on this method
+
 | Param                         | Type        | Description                                           | Condition                             | Required           |
 | ----------------------------- | ----------- | ----------------------------------------------------- | --------------------------------------| :----------------: |
 | **destinations**              | *array*     | Array of destinations to message                      | Min of 2 items and Max of 1000 items  | :white_check_mark: |
@@ -140,6 +152,7 @@ Access the [reference docs](https://docs.smsfire.com.br/apis-sms/enviar-mensagem
 | **debug**                     | *bool*      | Debug API request                                     | Default: false                        | :x:                |
 
 ### Example
+
 ```php
 //Load composer autoload file
 require './vendor/autoload.php';
