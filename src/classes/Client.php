@@ -2,8 +2,6 @@
 
 namespace Smsfire;
 
-use stdClass;
-
 use Smsfire\Configurations\Constants;
 use Smsfire\Traits\Utils;
 use Smsfire\Http\CurlClient;

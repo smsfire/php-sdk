@@ -2,8 +2,6 @@
 
 namespace Smsfire\Http;
 
-use stdClass;
-
 class Response
 {
     private $response;
