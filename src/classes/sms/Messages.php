@@ -40,14 +40,14 @@ class Messages extends Client
     {
         $apiParameters = self::getSmsApiParametersMap();
         $this->payload = array_filter([
-            $apiParameters[1] => $this->smsToParameter($to),
-            $apiParameters[2] => $this->smsTextParameter($text),
-            $apiParameters[3] => $this->smsFromParameter($from),
-            $apiParameters[4] => $this->smsCustomIdParameter($customId),
-            $apiParameters[5] => $this->smsCampaignIdParameter($campaignId),
-            $apiParameters[6] => $this->smsFlashParameter($flash),
-            $apiParameters[7] => $this->smsAllowReplyParameter($allowReply),
-            $apiParameters[8] => $this->dateTimeIso8601($scheduleTime)
+            $apiParameters[1] => self::smsToParameter($to),
+            $apiParameters[2] => self::smsTextParameter($text),
+            $apiParameters[3] => self::smsFromParameter($from),
+            $apiParameters[4] => self::smsCustomIdParameter($customId),
+            $apiParameters[5] => self::smsCampaignIdParameter($campaignId),
+            $apiParameters[6] => self::smsFlashParameter($flash),
+            $apiParameters[7] => self::smsAllowReplyParameter($allowReply),
+            $apiParameters[8] => self::dateTimeIso8601($scheduleTime)
         ]);
 
         if (empty($this->payload)) {
@@ -69,13 +69,13 @@ class Messages extends Client
     public function sendBulk(array $destinations = [], ?int $campaignId = null, bool $allowReply = false, ?string $scheduleTime = null, bool $debug = false)
     {
         $apiParameters = self::getSmsApiParametersMap();
-        $parsedDestinations = $this->smsDestinationsParameter($destinations, $apiParameters);
+        $parsedDestinations = self::smsDestinationsParameter($destinations, $apiParameters);
 
         $this->payload = array_filter([
             $apiParameters[0] => array_map('array_filter', $parsedDestinations),
-            $apiParameters[5] => $this->smsCampaignIdParameter($campaignId),
-            $apiParameters[7] => $this->smsAllowReplyParameter($allowReply),
-            $apiParameters[8] => $this->dateTimeIso8601($scheduleTime)
+            $apiParameters[5] => self::smsCampaignIdParameter($campaignId),
+            $apiParameters[7] => self::smsAllowReplyParameter($allowReply),
+            $apiParameters[8] => self::dateTimeIso8601($scheduleTime)
         ]);
 
         if (empty($this->payload)) {

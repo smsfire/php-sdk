@@ -218,4 +218,38 @@ trait Sanitization
 
         return $destinations;
     }
+    /**
+     * Sanitize ids for sms messages ids
+     * @static
+     * @param string $ids - Ids with comma separation
+     * @return array
+     */
+    private static function smsMessageIdsParameter($ids): array
+    {
+        $idsArray = explode(",", $ids);
+        $idsFiltered = array_filter($idsArray, 'is_numeric');
+
+        if (empty($idsFiltered)) {
+            throw new SanitizeExceptions('Each Id need to be numeric data');
+        }
+
+        return $idsFiltered;
+    }
+    /**
+     * Sanitize ids for sms messages cutomIds
+     * @static
+     * @param string $ids - customIds with comma separation
+     * @return array
+     */
+    private static function smscustomIdsParameter($ids): array
+    {
+        $idsArray = explode(",", $ids);
+        $idsFiltered = array_filter($idsArray, 'is_string');
+
+        if (empty($idsFiltered)) {
+            throw new SanitizeExceptions('Need at least one id to query');
+        }
+
+        return $idsFiltered;
+    }
 }

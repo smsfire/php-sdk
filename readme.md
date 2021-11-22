@@ -342,6 +342,151 @@ try {
 
 ```
 
+## Namespace - Smsfire\\Sms\\Status
+
+This namespace allows you to get messages status by `id` or given `customId`
+
+- [messageIds()](#get-messages-status-by-id---messageids) - Get messages status by id
+- [customIds()](#get-messages-status-by-customid---customids) - Get messages status by customId
+
+Access the [reference docs](https://docs.smsfire.com.br/apis-sms/consulta-status) to check the data response and the details of each parameter of this method.
+
+> #### The statusCode 204 will be given when given id or customId does not exist. [**REF. 204 No Content**](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/204)
+
+### Get messages status by id - messageIds()
+
+#### Guide of available parameters on this method
+
+| Param                         | Type        | Description                                           | Condition                             | Required           |
+| ----------------------------- | ----------- | ----------------------------------------------------- | --------------------------------------| :----------------: |
+| **ids**                       | *string*    | String with messages ids (Comma separated)            | Min of 1 and max of 200 Ids           | :white_check_mark: |
+| **debug**                     | *bool*      | Debug API request                                     | Default: false                        | :x:                |
+
+### Example
+```php
+
+//Load composer autoload file
+require './vendor/autoload.php';
+
+use Smsfire\Sms\Status;
+use Smsfire\Exceptions\SmsfireException;
+use Smsfire\Exceptions\HttpException;
+
+try {
+
+    $user  = 'myuser'; //Same user that is used to access Dashboard
+    $pass  = 'mypass'; //Same password that is used to access Dashboard
+    $token = base64_encode("{$user}:{$pass}");   
+
+    /**
+     * Pass base64 token on Status instance
+     * Check guide table of params
+     */
+    $messagesStatus = new Status($token);
+    $ids = "000001,000002,000003"; //Messages ids - Comma separated
+    $response = $messagesStatus->messageIds($ids, $debug);
+
+    /**
+     * Response as raw text
+     * Good to use when Debug option is true
+     */
+    echo $response;
+
+    //Response with the statusCode of Http response
+    echo $response->statusCode();
+
+    //Response as json string
+    echo $response->__toJson();
+
+    //Response as object
+    print_r($response->__toObject());
+
+    //Response as array
+    print_r($response->__toArray());
+
+    //Handle empty result
+    if($response->statusCode() === 204) {
+      echo "Message id does not exist";
+    }
+
+} catch (SmsfireException $e) {  
+    echo $e->getMessage();
+} catch (HttpException $e) {
+    echo $e->getMessage();
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+
+```
+
+> Due API limitations this method will accepts the maximum of **200 messages ids**. For more, access the [Portal SMSFire](https://v2.smsfire.com.br) and access it on menu SMS > Reports
+
+### Get messages status by customId - customIds()
+
+#### Guide of available parameters on this method
+
+| Param                         | Type        | Description                                           | Condition                             | Required           |
+| ----------------------------- | ----------- | ----------------------------------------------------- | --------------------------------------| :----------------: |
+| **customIds**                 | *string*    | String with custom id of messages (Comma separated)   | Min of 1 and max of 200 custom ids    | :white_check_mark: |
+| **debug**                     | *bool*      | Debug API request                                     | Default: false                        | :x:                |
+
+### Example
+```php
+
+//Load composer autoload file
+require './vendor/autoload.php';
+
+use Smsfire\Sms\Status;
+use Smsfire\Exceptions\SmsfireException;
+use Smsfire\Exceptions\HttpException;
+
+try {
+
+    $user  = 'myuser'; //Same user that is used to access Dashboard
+    $pass  = 'mypass'; //Same password that is used to access Dashboard
+    $token = base64_encode("{$user}:{$pass}");   
+
+    /**
+     * Pass base64 token on Status instance
+     * Check guide table of params
+     */
+    $messagesStatus = new Status($token);
+    $customIds = "myid0001,myid000002,myid000003"; //Custom ids - Comma separated
+    $response = $messagesStatus->customIds($customIds, $debug);
+
+    /**
+     * Response as raw text
+     * Good to use when Debug option is true
+     */
+    echo $response;
+
+    //Response with the statusCode of Http response
+    echo $response->statusCode();
+
+    //Response as json string
+    echo $response->__toJson();
+
+    //Response as object
+    print_r($response->__toObject());
+
+    //Response as array
+    print_r($response->__toArray());
+
+    //Handle empty result
+    if($response->statusCode() === 204) {
+      echo "Custom id does not exist";
+    }
+
+} catch (SmsfireException $e) {  
+    echo $e->getMessage();
+} catch (HttpException $e) {
+    echo $e->getMessage();
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+
+```
+
 ## Namespace - Smsfire\\Exceptions
 
 Custom exceptions that allows you a better error handling.

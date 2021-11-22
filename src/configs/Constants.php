@@ -30,17 +30,20 @@ class Constants
         'scheduleTime' => null,
         'fractionate' => null,
         'interval' => null,
-        'parts' => null
+        'parts' => null,
+        'ids' => null,
+        'customIds' => null
     ];
 
     public const API_ENDPOINT = [
         'sms' => [
             'individual' => '/sms/send/individual',
             'bulk' => '/sms/send/bulk',
+            'status' => '/sms/status/search',
             'inbox' => [
                 'new' => '/sms/inbox/new',
                 'all' => '/sms/inbox/all'
-            ]
+            ],
         ]
     ];
 
