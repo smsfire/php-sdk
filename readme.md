@@ -27,7 +27,7 @@ The reference of this service can be found [here](https://docs.smsfire.com.br/ap
 
 :speech_balloon: [Messages Service](#namespace---smsfiresmsmessages)  
 :mailbox_with_mail: [Inbox Service](#namespace---smsfiresmsinbox)  
-:ballot_box_with_check: Status Service
+:ballot_box_with_check: [Status Service](#namespace---smsfiresmsstatus)
 
 ## Namespace - Smsfire\\Sms\\Messages
 
